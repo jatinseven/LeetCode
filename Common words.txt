@@ -1,0 +1,19 @@
+class Solution:
+    def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+        ban_words = set(banned)
+        #grammer = {" ", "!", "?", "'", ",", ";", '"', "."}
+        para = re.sub(r"[!?',;.]"," ",paragraph)
+        para_lower = para.lower()
+        word_list = para_lower.split()
+        word_count = Counter(word_list).most_common()
+        print(word_count)
+        
+        for word,count in word_count:
+            if word not in ban_words:
+                result = word
+                print(word)
+                print(count)
+
+                break
+
+        return result
